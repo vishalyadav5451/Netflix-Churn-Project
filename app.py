@@ -98,22 +98,22 @@ if st.button("Predict Churn"):
     st.subheader("Prediction Result")
 
     if prediction == 1:
-        st.error("⚠️ Customer is likely to CHURN")
+        st.error("Customer is likely to CHURN")
     else:
-        st.success("✅ Customer is NOT likely to churn")
+        st.success("Customer is NOT likely to churn")
 
     st.write(f"Churn Probability: {probability:.2%}")
 
     # Risk Level
     if probability > 0.7:
-        st.error("🔴 High Risk Customer")
+        st.error("High Risk Customer")
     elif probability > 0.4:
-        st.warning("🟡 Medium Risk Customer")
+        st.warning("Medium Risk Customer")
     else:
-        st.success("🟢 Low Risk Customer")
+        st.success("Low Risk Customer")
 
     # Debug
-    with st.expander("🔍 Debug Info"):
+    with st.expander("Debug Info"):
         st.write("Input Data:", input_data)
         st.write("Prediction Probability:", probability)
 
