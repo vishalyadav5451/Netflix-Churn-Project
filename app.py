@@ -27,6 +27,25 @@ st.divider()
 # ===============================
 # INPUTS
 # ===============================
+subscription_map = {
+    'Basic' : 0,
+    'Standard' : 1 ,
+    'Premium' : 2
+}
+device_map = {
+    'Desktop': 0 , 'Laptop': 1, 'Mobile': 2, 'TV': 3, 'Tablet': 4
+}
+payment_map = {
+     'Credit Card':0, 'Crypto':1, 'Debit Card':2, 'Gift Card':3, 'PayPal':4
+ }
+region_map = {
+    'Africa':0, 'Asia':1, 'Europe':2, 'North America':3, 'Oceania':4,
+       'South America':5
+}
+genre_map = {
+    'Action':0, 'Comedy':1, 'Documentary':2, 'Drama':3, 'Horror':4, 'Romance':5,
+       'Sci-Fi':6
+}
 col1, col2 = st.columns(2)
 
 with col1:
@@ -37,23 +56,25 @@ with col1:
 
 with col2:
     gender = st.selectbox("Gender", ["Male", "Female"])
-    subscription_type = st.selectbox("Subscription Type", [0, 1, 2])
-    device = st.selectbox("Device", [0, 1, 2, 3])
-    payment_method = st.selectbox("Payment Method", [0, 1, 2])
+    subscription_type = st.selectbox("Subscription Type",list(subscription_map.keys()))
+    device = st.selectbox("Device", list(device_map.keys()))
+    payment_method = st.selectbox("Payment Method", list(payment_map.keys()))
+    
 
 st.divider()
 
 col3, col4 = st.columns(2)
 
 with col3:
-    region = st.selectbox("Region", [0, 1, 2, 3, 4, 5])
+    region = st.selectbox("Region", list(region_map.keys()))
     number_of_profiles = st.slider("Number of Profiles", 1, 5, 2)
 
 with col4:
-    favorite_genre = st.selectbox("Favorite Genre", [0, 1, 2, 3])
+    favorite_genre = st.selectbox("Favorite Genre", list(genre_map.keys()))
     avg_watch_time_per_day = st.number_input("Avg Watch Time/Day (hrs)", 0.0, 24.0, 2.0)
 
 st.divider()
+
 
 # ===============================
 # PREDICTION
@@ -62,6 +83,11 @@ if st.button("Predict Churn"):
 
     # Encoding
     gender_encoded = 1 if gender == "Female" else 0
+    subscription_encoded = subscription_map[subscription_type]
+    device_encoded = device_map[device]
+    payment_encoded = payment_map[payment_method]
+    region_encoded = region_map[region]
+    genre_encoded = genre_map[favorite_genre]
 
     # Derived Features (IMPORTANT)
     engagement_score = avg_watch_time_per_day / 24
@@ -72,15 +98,15 @@ if st.button("Predict Churn"):
     input_data = [[
         age,
         gender_encoded,
-        subscription_type,
+        subscription_encoded,
         watch_hours,
         last_login_days,
-        region,
-        device,
+        region_encoded,
+        device_encoded,
         monthly_fee,
-        payment_method,
+        payment_encoded,
         number_of_profiles,
-        favorite_genre,
+        genre_encoded,
         engagement_score,
         inactive_flag,
         high_price_flag
