@@ -146,24 +146,3 @@ if st.button("Predict Churn"):
 else:
     st.info("Enter customer details and click Predict Churn.")
 
-# ===============================
-# TEST MODE (FOR VALIDATION)
-# ===============================
-# st.divider()
-# st.subheader("🧪 Test Mode")
-
-# if st.button("Test Known Churn Case"):
-
-#     # Direct scaled test (same as notebook)
-#     X_scaled = np.array([[ 
-#         1.5, 0, 1, -1.2, 60, 3, 2, 1.5, 1, 0.3, 2, 0.1, 1, 1
-#     ]])
-
-#     # Access model inside pipeline
-#     model = pipeline.named_steps['model']
-
-#     prediction = model.predict(X_scaled)[0]
-#     prob = model.predict_proba(X_scaled)[0][1]
-
-#     st.write("Prediction:", prediction)
-#     st.write("Probability:", prob)
