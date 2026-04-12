@@ -1,0 +1,149 @@
+# 🎬 Netflix Customer Churn Prediction
+
+## 📌 Project Overview
+
+This project predicts whether a customer is likely to churn (leave the platform) using Machine Learning.
+It analyzes user behavior such as watch hours, login activity, and subscription details to identify high-risk customers.
+
+---
+
+## 🎯 Objective
+
+* Predict customer churn using ML
+* Help improve customer retention
+* Build an end-to-end ML pipeline
+
+---
+
+## 🧠 Machine Learning Model
+
+* Algorithm: Random Forest Classifier
+* Reason: High accuracy, stability, and reduced overfitting
+* Evaluation Metrics:
+
+  * Accuracy
+  * Precision
+  * Recall
+  * F1-score
+  * Confusion Matrix
+
+---
+
+## 📊 Features Used
+
+* Age
+* Gender
+* Watch Hours
+* Last Login Days
+* Monthly Fee
+* Subscription Type
+* Region
+* Device
+* Payment Method
+* Number of Profiles
+
+### 🔧 Feature Engineering
+
+* **Engagement Score** = Watch Hours × Avg Watch Time
+* **Inactive Flag** = Based on last login
+* **High Price Flag** = Based on subscription fee
+
+---
+
+## ⚙️ Tech Stack
+
+* Python
+* Scikit-learn
+* Pandas, NumPy
+* Streamlit (for UI)
+* Joblib (model saving)
+* Docker (deployment)
+
+---
+
+## 🚀 How to Run the Project
+
+### 🔹 1. Clone the Repository
+
+```
+git clone <your-repo-link>
+cd churn-prediction
+```
+
+### 🔹 2. Install Dependencies
+
+```
+pip install -r requirements.txt
+```
+
+### 🔹 3. Run the App
+
+```
+streamlit run app.py
+```
+
+---
+
+## 🐳 Run with Docker
+
+```
+docker build -t churn-app .
+docker run -p 8501:8501 churn-app
+```
+
+Then open:
+
+```
+http://localhost:8501
+```
+
+---
+
+## 📈 Output
+
+* Churn Prediction (Yes/No)
+* Probability Score (%)
+* Risk Level:
+
+  * 🟢 Low
+  * 🟡 Medium
+  * 🔴 High
+
+---
+
+## 🧪 Model Validation
+
+* Compared results between notebook and app
+* Verified probability consistency
+* Tested with real dataset samples
+
+---
+
+## ⚠️ Challenges Faced
+
+* Feature mismatch between training and app
+* Scaler inconsistency
+* Deployment issues
+* Model tuning
+
+---
+
+## 🔮 Future Scope
+
+* Improve model accuracy
+* Use deep learning models
+* Deploy on cloud (AWS/Render)
+* Add real-time data integration
+
+---
+
+## 👨‍💻 Author
+
+**Vishal Yadav**
+MCA Student
+
+---
+
+## ⭐ Conclusion
+
+This project demonstrates a complete machine learning pipeline from data preprocessing to deployment, solving a real-world churn prediction problem.
